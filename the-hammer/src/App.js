@@ -30,8 +30,8 @@ function App() {
     axios
       .get("https://paper-api.alpaca.markets/v2/account", {
         headers: {
-          "APCA-API-KEY-ID": "PK1Y2YT766GIK50D3IQJ",
-          "APCA-API-SECRET-KEY": "Z524RYhYKur530tMr55g7u1MuuutfuJN21flFD5U",
+          "APCA-API-KEY-ID": process.env.REACT_APP_DAWN_KEY,
+          "APCA-API-SECRET-KEY": process.env.REACT_APP_DAWN_SECRET,
         },
       })
       .then((res) => {
@@ -42,8 +42,8 @@ function App() {
     axios
       .get("https://paper-api.alpaca.markets/v2/account", {
         headers: {
-          "APCA-API-KEY-ID": "PKPMS1YTEFMEVOWFCUKP",
-          "APCA-API-SECRET-KEY": "8WsOJoYx8BSgAk8mvHvdh4s5e9LuhPeCAP859iXH",
+          "APCA-API-KEY-ID": process.env.REACT_APP_BURST_KEY,
+          "APCA-API-SECRET-KEY": process.env.REACT_APP_BURST_SECRET,
         },
       })
       .then((res) => {
@@ -67,8 +67,8 @@ function App() {
       <h1>The Pavilion Algos</h1>
       <h4>{today}</h4>
       <div className="stocks">
-        {list.map((item) => {
-          return <h6>{item}</h6>;
+        {list.map((item, index) => {
+          return <h6 key={index}>{item}</h6>;
         })}
       </div>
       <div className="theBots">
