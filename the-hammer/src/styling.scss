@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Teko:wght@600&display=swap");
+.mainapp {
+  font-family: "Teko", sans-serif;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #18314f;
+  height: 100vh;
+
+  h1 {
+    color: #49c5b9e1;
+    letter-spacing: 1.5px;
+    margin: 0;
+    padding: 0;
+    font-size: 2.4em;
+    margin-top: 25px;
+  }
+
+  h4 {
+    color: #6ad5ca;
+    letter-spacing: 1.5px;
+    margin: 0;
+    padding: 0;
+    font-size: 2.9em;
+    margin-top: -12px;
+  }
+
+  h3 {
+    color: #6ad5cb;
+  }
+
+  .stocks {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    border: solid rgba(146, 250, 155, 0.246) 3px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 15px;
+
+    h6 {
+      margin: 0;
+      padding: 5px;
+      color: #84f3bc;
+      font-size: 2em;
+    }
+  }
+
+  .theBots {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+
+    h4 {
+      color: white;
+      font-size: 2em;
+      letter-spacing: 2px;
+      margin: 0;
+      padding: 0;
+    }
+
+    h5 {
+      color: rgb(235, 130, 235);
+      font-size: 2.7em;
+      margin: 0;
+      padding: 0;
+      letter-spacing: 2px;
+    }
+
+    h6 {
+      font-size: 3.6em;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dawn {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-right: 2px solid rgba(255, 255, 255, 0.342);
+      padding-right: 15px;
+    }
+
+    .burst {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border-left: 2px solid rgba(255, 255, 255, 0.349);
+      padding-left: 15px;
+    }
+  }
+}
