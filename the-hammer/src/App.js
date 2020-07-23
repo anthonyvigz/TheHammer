@@ -73,7 +73,6 @@ function App() {
       </div>
       <div className="theBots">
         <div className="dawn">
-          <h4>Dawn</h4>
           <h5>${dawnData["equity"]}</h5>
           <h6
             style={
@@ -81,17 +80,6 @@ function App() {
             }
           >
             {dawnPercent.toFixed(2)}%
-          </h6>
-        </div>
-        <div className="burst">
-          <h4>Burst</h4>
-          <h5>${burstData["equity"]}</h5>
-          <h6
-            style={
-              burstPercent >= 0 ? { color: "lightgreen" } : { color: "red" }
-            }
-          >
-            {burstPercent.toFixed(2)}%
           </h6>
         </div>
       </div>
