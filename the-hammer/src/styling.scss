@@ -148,9 +148,16 @@
     width: 80%;
     font-size: 1em;
     color: red;
+    text-align: center;
 
     span {
       color: pink;
     }
+  }
+
+  #logout {
+    background: rgb(184, 20, 20);
+    font-size: 0.7em;
+    opacity: 0.8;
   }
 }

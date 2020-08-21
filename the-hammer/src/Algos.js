@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styling.scss";
 
-function Algos() {
+function Algos(props) {
   const [list, setList] = useState([]);
   const [dawnData, setDawn] = useState("");
   const [burstData, setBurst] = useState("");
@@ -18,6 +18,7 @@ function Algos() {
     axios
       .get(`https://the-pavilion-hammer.herokuapp.com/data/get`)
       .then((res) => {
+        console.log(res.data);
         const length = res.data.data.length;
         const newlist = res.data.data[length - 1]["watchlist"].split(" ");
         const finalist = [];
@@ -79,6 +80,11 @@ function Algos() {
     event.preventDefault();
 
     setExclude(event.target.value);
+  };
+
+  const logout = () => {
+    window.localStorage.clear();
+    setTimeout(() => props.history.push("/"), 1000);
   };
 
   const sendExclude = (event) => {
@@ -154,6 +160,9 @@ function Algos() {
           excluded today.
         </h3>
       </form>
+      <button id="logout" onClick={logout}>
+        Logout
+      </button>
     </div>
   );
 }
