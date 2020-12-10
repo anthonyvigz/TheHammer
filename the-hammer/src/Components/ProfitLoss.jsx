@@ -35,7 +35,6 @@ export default function ProfitLoss() {
 			})
 			.then((res) => {
         const profitLoss = parseInt(res.data["Equity"][res.data["Equity"].length - 1]["ProfitLoss"]);
-        console.log(profitLoss, typeof profitLoss)
         setTodayProfit(profitLoss)
 			})
 			.catch((err) => {
@@ -43,7 +42,6 @@ export default function ProfitLoss() {
 			});
   }, []);
 
-  console.log(todayProfit)
 
   const classes = useStyles();
   return (

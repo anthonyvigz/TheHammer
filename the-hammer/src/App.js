@@ -1,14 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoutes from "./ProtectedRoutes";
+import AllOrders from "./Components/AllOrders";
 
 export default function App() {
   return (
     <div className="app">
       <Switch>
         <Route exact path="/" component={Login} />
-        <ProtectedRoute />
+        <ProtectedRoutes path="/dashboard" />
       </Switch>
     </div>
   );

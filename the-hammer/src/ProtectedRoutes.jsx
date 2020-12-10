@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import Algos from "./Algos";
 import Dashboard from "./Components/Dashboard";
 
-function ProtectedRoutes() {
+function ProtectedRoutes({ path }) {
   // eslint-disable-next-line consistent-return
   function getToken() {
     try {
@@ -22,7 +22,7 @@ function ProtectedRoutes() {
     console.log("no token");
     return <Redirect to={{ pathname: "/", error: true }} />;
   } else {
-    return <Route path="/dashboard" component={Dashboard} />;
+    return <Route path={path} component={Dashboard} />;
   }
 }
 
