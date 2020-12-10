@@ -45,7 +45,7 @@ export default function Login(props) {
               console.log(res.data);
               localStorage.setItem("token", res.data.token);
               setTimeout(() => {
-                props.history.push("/algos");
+                props.history.push("/dashboard");
               }, 500);
             })
             .catch((err) => {
