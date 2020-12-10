@@ -13,9 +13,18 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
 import Overview from './Overview';
 import AllOrders from './AllOrders';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PeopleIcon from '@material-ui/icons/People';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+
 
 const drawerWidth = 240;
 
@@ -114,6 +123,49 @@ export default function Dashboard(props) {
 	const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 	const yyyy = today.getFullYear();
 
+	const goToOrders = () => {
+		props.history.push("/dashboard/orders")
+	  }
+	
+	  const goToDashboard = () => {
+		props.history.push("/dashboard")
+	  }
+
+	const mainListItems = (
+		<div>
+		  <ListItem button onClick={() => goToDashboard()}>
+			<ListItemIcon>
+			  <DashboardIcon />
+			</ListItemIcon>
+			<ListItemText primary="Dashboard" />
+		  </ListItem>
+		  <ListItem button onClick={() => goToOrders()}>
+			<ListItemIcon>
+			  <BarChartIcon />
+			</ListItemIcon>
+			<ListItemText primary="Orders" />
+		  </ListItem>
+		</div>
+	  );
+	
+	  const secondaryListItems = (
+		<div>
+		  <ListSubheader inset>Saved reports</ListSubheader>
+		  <ListItem button>
+			<ListItemIcon>
+			  <AssignmentIcon />
+			</ListItemIcon>
+			<ListItemText primary="Current month" />
+		  </ListItem>
+		  <ListItem button>
+			<ListItemIcon>
+			  <AssignmentIcon />
+			</ListItemIcon>
+			<ListItemText primary="Last month" />
+		  </ListItem>
+		</div>
+	  );
+
   today = mm + '/' + dd + '/' + yyyy;
   
   console.log("props", props)
@@ -136,7 +188,7 @@ export default function Dashboard(props) {
 						Dashboard - Jacinto {today}
 					</Typography>
 					<IconButton color="inherit">
-						<Badge badgeContent={4} color="secondary">
+						<Badge badgeContent={0} color="secondary">
 							<NotificationsIcon />
 						</Badge>
 					</IconButton>
@@ -159,7 +211,7 @@ export default function Dashboard(props) {
 				<Divider />
 				<List>{secondaryListItems}</List>
 			</Drawer>
-      {props.location.pathname === "/dashboard" ? <Overview /> : props.location.pathname === "/dashboard/orders" ? <AllOrders /> : null}
+      {props.location.pathname === "/dashboard" ? <Overview goToOrders={goToOrders}/> : props.location.pathname === "/dashboard/orders" ? <AllOrders /> : null}
 		</div>
 	);
 }

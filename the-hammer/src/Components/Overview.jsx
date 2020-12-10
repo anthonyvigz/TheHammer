@@ -10,6 +10,7 @@ import Link from '@material-ui/core/Link';
 import Chart from './Chart';
 import ProfitLoss from './ProfitLoss';
 import Orders from './Orders';
+import Watchlist from './Watchlist';
 
 function Copyright() {
 	return (
@@ -105,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function Overview() {
+export default function Overview(props) {
 	const classes = useStyles();
 	const [ open, setOpen ] = React.useState(true);
 
@@ -132,13 +133,18 @@ export default function Overview() {
 					{/* Recent Profit Loss */}
 					<Grid item xs={12} md={4} lg={3}>
 						<Paper className={fixedHeightPaper}>
-							<ProfitLoss />
+							<ProfitLoss goToOrders={props.goToOrders}/>
+						</Paper>
+					</Grid>
+					<Grid item xs={12}>
+						<Paper className={classes.paper}>
+							<Watchlist />
 						</Paper>
 					</Grid>
 					{/* Recent Orders */}
 					<Grid item xs={12}>
 						<Paper className={classes.paper}>
-							<Orders />
+							<Orders goToOrders={props.goToOrders} />
 						</Paper>
 					</Grid>
 				</Grid>

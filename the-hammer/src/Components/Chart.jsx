@@ -28,8 +28,24 @@ export default function Chart() {
     return { time, amount };
   }
 
+
+  function setDate(unix) {
+    const date = new Date(unix * 1000);
+    // Hours part from the timestamp
+    const hours = date.getHours();
+    // Minutes part from the timestamp
+    const minutes = "0" + date.getMinutes();
+    // Seconds part from the timestamp
+    const seconds = "0" + date.getSeconds();
+  
+    // Will display time in 10:30:23 format
+    const formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+    return formattedTime;
+  }
+
   const data = todayEquity.map(equity => {
-    return createData(equity["Time"], equity["ProfitLoss"])
+    return createData(setDate(equity["Time"]), equity["ProfitLoss"])
   });
   
   const theme = useTheme();

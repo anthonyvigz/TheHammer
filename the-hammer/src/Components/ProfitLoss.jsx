@@ -22,7 +22,7 @@ const yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
 
-export default function ProfitLoss() {
+export default function ProfitLoss(props) {
 
   const [ todayProfit, setTodayProfit ] = useState(0);
 
@@ -54,7 +54,7 @@ export default function ProfitLoss() {
         on {today}
       </Typography>
       <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
+        <Link color="primary" href="#" onClick={() => props.goToOrders()}>
           View orders
         </Link>
       </div>

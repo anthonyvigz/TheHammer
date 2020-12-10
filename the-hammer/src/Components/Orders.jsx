@@ -19,14 +19,16 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+let todayFormatted = new Date()
 let today = new Date();
 const dd = String(today.getDate()).padStart(2, '0');
 const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 const yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
+todayFormatted = yyyy+"-"+mm+"-"+dd;
 
-export default function Orders() {
+export default function Orders(props) {
 	const [ todayData, setTodayData ] = useState([]);
 
 	useEffect(() => {
@@ -63,6 +65,7 @@ export default function Orders() {
 				</TableHead>
 				<TableBody>
 					{todayData.map((orderData, index) => (
+						orderData["Date"] === todayFormatted ?
 						<TableRow key={index}>
 							<TableCell>{today}</TableCell>
               <TableCell>{orderData['Time']}</TableCell>
@@ -72,11 +75,11 @@ export default function Orders() {
 							<TableCell>{orderData['EntryPrice']}</TableCell>
 							<TableCell align="right">{orderData['SmaEntryDelta']}</TableCell>
 						</TableRow>
-					))}
+					: null))}
 				</TableBody>
 			</Table>
 			<div className={classes.seeMore}>
-				<Link color="primary" href="#" onClick={preventDefault}>
+				<Link color="primary" href="#" onClick={() => props.goToOrders()}>
 					See more orders
 				</Link>
 			</div>
