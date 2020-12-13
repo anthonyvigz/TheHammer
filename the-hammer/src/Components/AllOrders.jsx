@@ -31,6 +31,13 @@ const columns = [
     format: (value) => value.toLocaleString("en-US"),
   },
   {
+    id: "entryPctChange",
+    label: "Entry % Change",
+    minWidth: 90,
+    align: "left",
+    format: (value) => value.toLocaleString("en-US"),
+  },
+  {
     id: "orderType",
     label: "Order Type",
     minWidth: 120,
@@ -93,10 +100,11 @@ export default function AllOrders() {
     symbol,
     smaEntryDelta,
     entryPrice,
+    entryPctChange,
     orderType,
     shares
   ) {
-    return { date, time, symbol, smaEntryDelta, entryPrice, orderType, shares };
+    return { date, time, symbol, smaEntryDelta, entryPrice, entryPctChange, orderType, shares };
   }
 
   const rows = todayData.map((order) => {
@@ -106,6 +114,7 @@ export default function AllOrders() {
       order["Symbol"],
       order["SmaEntryDelta"],
       order["EntryPrice"],
+      order["EntryPercent"],
       order["OrderType"],
       order["Shares"]
     );

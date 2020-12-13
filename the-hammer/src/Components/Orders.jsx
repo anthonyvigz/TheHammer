@@ -56,6 +56,7 @@ export default function Orders(props) {
 						<TableCell>Order Type</TableCell>
 						<TableCell>Shares</TableCell>
 						<TableCell>Entry Price</TableCell>
+						<TableCell>Entry % Change</TableCell>
 						<TableCell align="right">SMA Delta</TableCell>
 					</TableRow>
 				</TableHead>
@@ -69,6 +70,7 @@ export default function Orders(props) {
 							<TableCell>{orderData['OrderType']}</TableCell>
 							<TableCell>{orderData['Shares']}</TableCell>
 							<TableCell>{orderData['EntryPrice']}</TableCell>
+							<TableCell>{orderData['EntryPercent']}</TableCell>
 							<TableCell align="right">{orderData['SmaEntryDelta']}</TableCell>
 						</TableRow>
 					: null))}

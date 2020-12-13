@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import axios from "axios";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Divider } from "@material-ui/core";
 
 export default function Chart() {
   const [tradeData, setTradeData] = useState({
@@ -53,7 +53,8 @@ export default function Chart() {
             {tradeData.totalTrades}
           </Typography>
         </Box>
-        <Box>
+        <Divider orientation="vertical" flexItem />
+        <Box marginLeft="25px">
           <Typography variant="subtitle1" component="h2">
             Total Short Trades
           </Typography>{" "}
@@ -61,7 +62,8 @@ export default function Chart() {
             {tradeData.shortTrades}
           </Typography>
         </Box>
-        <Box>
+        <Divider orientation="vertical" flexItem />
+        <Box marginLeft="25px">
           <Typography variant="subtitle1" component="h2">
             Total Buy Trades
           </Typography>{" "}
@@ -69,7 +71,8 @@ export default function Chart() {
             {tradeData.buyTrades}
           </Typography>
         </Box>
-        <Box>
+        <Divider orientation="vertical" flexItem />
+        <Box marginLeft="25px">
           <Typography variant="subtitle1" component="h2">
             Percentage of Winning Short Trades
           </Typography>{" "}
@@ -77,7 +80,8 @@ export default function Chart() {
             {tradeData.shortWinPercent ? Math.round(tradeData.shortWinPercent) : 0}%
           </Typography>
         </Box>
-        <Box>
+        <Divider orientation="vertical" flexItem />
+        <Box marginLeft="25px">
           <Typography variant="subtitle1" component="h2">
             Percentage of Winning Buy Trades
           </Typography>{" "}
