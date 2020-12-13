@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import Algos from "./Algos";
 import Dashboard from "./Components/Dashboard";
 
 function ProtectedRoutes({ path }) {

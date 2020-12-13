@@ -8,9 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import Chart from './Chart';
-import ProfitLoss from './ProfitLoss';
 import Orders from './Orders';
 import Watchlist from './Watchlist';
+import Exclude from './Exclude';
 
 function Copyright() {
 	return (
@@ -124,16 +124,16 @@ export default function Overview(props) {
 			<div className={classes.appBarSpacer} />
 			<Container maxWidth="lg" className={classes.container}>
 				<Grid container spacing={3}>
-					{/* Chart */}
+					{/* Stats */}
 					<Grid item xs={12} md={8} lg={9}>
 						<Paper className={fixedHeightPaper}>
 							<Chart />
 						</Paper>
 					</Grid>
-					{/* Recent Profit Loss */}
+					{/* Exclude */}
 					<Grid item xs={12} md={4} lg={3}>
 						<Paper className={fixedHeightPaper}>
-							<ProfitLoss goToOrders={props.goToOrders}/>
+							<Exclude />
 						</Paper>
 					</Grid>
 					<Grid item xs={12}>

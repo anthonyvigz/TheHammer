@@ -116,12 +116,13 @@ export default function Dashboard(props) {
 	const handleDrawerClose = () => {
 		setOpen(false);
 	};
-	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
 	let today = new Date();
 	const dd = String(today.getDate()).padStart(2, '0');
 	const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 	const yyyy = today.getFullYear();
+
+	today = mm + '/' + dd + '/' + yyyy;
 
 	const goToOrders = () => {
 		props.history.push("/dashboard/orders")
@@ -166,10 +167,6 @@ export default function Dashboard(props) {
 		</div>
 	  );
 
-  today = mm + '/' + dd + '/' + yyyy;
-  
-  console.log("props", props)
-
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
@@ -209,7 +206,6 @@ export default function Dashboard(props) {
 				<Divider />
 				<List>{mainListItems}</List>
 				<Divider />
-				<List>{secondaryListItems}</List>
 			</Drawer>
       {props.location.pathname === "/dashboard" ? <Overview goToOrders={goToOrders}/> : props.location.pathname === "/dashboard/orders" ? <AllOrders /> : null}
 		</div>
