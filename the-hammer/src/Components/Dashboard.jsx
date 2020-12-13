@@ -1,213 +1,211 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import Overview from './Overview';
-import AllOrders from './AllOrders';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-
+import React from "react";
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Drawer from "@material-ui/core/Drawer";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
+import MenuIcon from "@material-ui/icons/Menu";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Overview from "./Overview";
+import AllOrders from "./AllOrders";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import DashboardIcon from "@material-ui/icons/Dashboard";
+import BarChartIcon from "@material-ui/icons/BarChart";
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		display: 'flex'
-	},
-	toolbar: {
-		paddingRight: 24 // keep right padding when drawer closed
-	},
-	toolbarIcon: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-		padding: '0 8px',
-		...theme.mixins.toolbar
-	},
-	appBar: {
-		zIndex: theme.zIndex.drawer + 1,
-		transition: theme.transitions.create([ 'width', 'margin' ], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen
-		})
-	},
-	appBarShift: {
-		marginLeft: drawerWidth,
-		width: `calc(100% - ${drawerWidth}px)`,
-		transition: theme.transitions.create([ 'width', 'margin' ], {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen
-		})
-	},
-	menuButton: {
-		marginRight: 36
-	},
-	menuButtonHidden: {
-		display: 'none'
-	},
-	title: {
-		flexGrow: 1
-	},
-	drawerPaper: {
-		position: 'relative',
-		whiteSpace: 'nowrap',
-		width: drawerWidth,
-		transition: theme.transitions.create('width', {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.enteringScreen
-		})
-	},
-	drawerPaperClose: {
-		overflowX: 'hidden',
-		transition: theme.transitions.create('width', {
-			easing: theme.transitions.easing.sharp,
-			duration: theme.transitions.duration.leavingScreen
-		}),
-		width: theme.spacing(7),
-		[theme.breakpoints.up('sm')]: {
-			width: theme.spacing(9)
-		}
-	},
-	appBarSpacer: theme.mixins.toolbar,
-	content: {
-		flexGrow: 1,
-		height: '100vh',
-		overflow: 'auto'
-	},
-	container: {
-		paddingTop: theme.spacing(4),
-		paddingBottom: theme.spacing(4)
-	},
-	paper: {
-		padding: theme.spacing(2),
-		display: 'flex',
-		overflow: 'auto',
-		flexDirection: 'column'
-	},
-	fixedHeight: {
-		height: 240
-	}
+  root: {
+    display: "flex",
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: "0 8px",
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: "none",
+  },
+  title: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: "relative",
+    whiteSpace: "nowrap",
+    width: drawerWidth,
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerPaperClose: {
+    overflowX: "hidden",
+    transition: theme.transitions.create("width", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up("sm")]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: "flex",
+    overflow: "auto",
+    flexDirection: "column",
+  },
+  fixedHeight: {
+    height: 240,
+  },
 }));
 
 export default function Dashboard(props) {
-	const classes = useStyles();
-	const [ open, setOpen ] = React.useState(true);
-	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
-	const handleDrawerClose = () => {
-		setOpen(false);
-	};
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
 
-	let today = new Date();
-	const dd = String(today.getDate()).padStart(2, '0');
-	const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-	const yyyy = today.getFullYear();
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  const yyyy = today.getFullYear();
 
-	today = mm + '/' + dd + '/' + yyyy;
+  today = mm + "/" + dd + "/" + yyyy;
 
-	const goToOrders = () => {
-		props.history.push("/dashboard/orders")
-	  }
-	
-	  const goToDashboard = () => {
-		props.history.push("/dashboard")
-	  }
+  const logOut = () => {
+    window.localStorage.clear();
+    setTimeout(() => props.history.push("/"), 1000);
+  };
 
-	const mainListItems = (
-		<div>
-		  <ListItem button onClick={() => goToDashboard()}>
-			<ListItemIcon>
-			  <DashboardIcon />
-			</ListItemIcon>
-			<ListItemText primary="Dashboard" />
-		  </ListItem>
-		  <ListItem button onClick={() => goToOrders()}>
-			<ListItemIcon>
-			  <BarChartIcon />
-			</ListItemIcon>
-			<ListItemText primary="Orders" />
-		  </ListItem>
-		</div>
-	  );
-	
-	  const secondaryListItems = (
-		<div>
-		  <ListSubheader inset>Saved reports</ListSubheader>
-		  <ListItem button>
-			<ListItemIcon>
-			  <AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Current month" />
-		  </ListItem>
-		  <ListItem button>
-			<ListItemIcon>
-			  <AssignmentIcon />
-			</ListItemIcon>
-			<ListItemText primary="Last month" />
-		  </ListItem>
-		</div>
-	  );
+  const goToOrders = () => {
+    props.history.push("/dashboard/orders");
+  };
 
-	return (
-		<div className={classes.root}>
-			<CssBaseline />
-			<AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
-				<Toolbar className={classes.toolbar}>
-					<IconButton
-						edge="start"
-						color="inherit"
-						aria-label="open drawer"
-						onClick={handleDrawerOpen}
-						className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-					>
-						<MenuIcon />
-					</IconButton>
-					<Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-						Dashboard - Jacinto {today}
-					</Typography>
-					<IconButton color="inherit">
-						<Badge badgeContent={0} color="secondary">
-							<NotificationsIcon />
-						</Badge>
-					</IconButton>
-				</Toolbar>
-			</AppBar>
-			<Drawer
-				variant="permanent"
-				classes={{
-					paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-				}}
-				open={open}
-			>
-				<div className={classes.toolbarIcon}>
-					<IconButton onClick={handleDrawerClose}>
-						<ChevronLeftIcon />
-					</IconButton>
-				</div>
-				<Divider />
-				<List>{mainListItems}</List>
-				<Divider />
-			</Drawer>
-      {props.location.pathname === "/dashboard" ? <Overview goToOrders={goToOrders}/> : props.location.pathname === "/dashboard/orders" ? <AllOrders /> : null}
-		</div>
-	);
+  const goToDashboard = () => {
+    props.history.push("/dashboard");
+  };
+
+  const mainListItems = (
+    <div>
+      <ListItem button onClick={() => goToDashboard()}>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItem>
+      <ListItem button onClick={() => goToOrders()}>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Orders" />
+      </ListItem>
+    </div>
+  );
+
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position="absolute"
+        className={clsx(classes.appBar, open && classes.appBarShift)}
+      >
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={clsx(
+              classes.menuButton,
+              open && classes.menuButtonHidden
+            )}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            Dashboard - Jacinto {today}
+          </Typography>
+          <IconButton onClick={() => logOut()} color="inherit">
+            <Badge badgeContent={0} color="secondary">
+              <ExitToAppIcon />
+            </Badge>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <List>{mainListItems}</List>
+        <Divider />
+      </Drawer>
+      {props.location.pathname === "/dashboard" ? (
+        <Overview goToOrders={goToOrders} />
+      ) : props.location.pathname === "/dashboard/orders" ? (
+        <AllOrders />
+      ) : null}
+    </div>
+  );
 }

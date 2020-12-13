@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "@material-ui/core/styles";
 import Title from "./Title";
 import axios from "axios";
 import { Typography, Box } from "@material-ui/core";
@@ -41,8 +40,6 @@ export default function Chart() {
         console.log(err);
       });
   }, []);
-
-  const theme = useTheme();
 
   return (
     <React.Fragment>

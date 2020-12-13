@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Title from "./Title";
 import axios from "axios";
 import { Typography, Button, Box, TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
@@ -58,11 +57,11 @@ export default function Orders(props) {
   }, [excludedStocks]);
 
   let today = new Date();
-	const dd = String(today.getDate()).padStart(2, '0');
-	const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  const dd = String(today.getDate()).padStart(2, "0");
+  const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
   const yyyy = today.getFullYear();
-  
-  today = mm + '/' + dd + '/' + yyyy;
+
+  today = mm + "/" + dd + "/" + yyyy;
 
   const [open, setOpen] = React.useState(false);
 
@@ -77,7 +76,14 @@ export default function Orders(props) {
   return (
     <React.Fragment>
       <Title>Today's Exclude</Title>
-      <Box display="flex" alignItems="center" flexDirection="column" justifyContent="space-between" height="100px" marginTop="30px">
+      <Box
+        display="flex"
+        alignItems="center"
+        flexDirection="column"
+        justifyContent="space-between"
+        height="100px"
+        marginTop="30px"
+      >
         <Button variant="contained" color="secondary" onClick={handleClickOpen}>
           Exclude Stocks?
         </Button>
@@ -104,8 +110,9 @@ export default function Orders(props) {
             • Stock(s) must be submitted before the algorithm is run.
           </ListItemText>
           <ListItemText inset={true}>
-            • Once added, the stock(s) will be excluded for the day <br />
-            and will reset for next trading day.
+            • Once added, the stock(s) will be excluded for the day
+            <ListItemText inset={true}>and will reset for next trading day.
+            </ListItemText>
           </ListItemText>
           <Box
             display="flex"

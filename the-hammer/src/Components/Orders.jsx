@@ -9,10 +9,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
 import axios from 'axios';
 
-function preventDefault(event) {
-	event.preventDefault();
-}
-
 const useStyles = makeStyles((theme) => ({
 	seeMore: {
 		marginTop: theme.spacing(3)

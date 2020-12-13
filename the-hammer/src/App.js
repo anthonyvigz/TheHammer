@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Login from "./Login";
 import ProtectedRoutes from "./ProtectedRoutes";
-import AllOrders from "./Components/AllOrders";
 
 export default function App() {
   return (

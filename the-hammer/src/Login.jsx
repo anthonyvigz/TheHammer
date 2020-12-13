@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 import Error from "./Error";
 import IncorrectLogin from "./IncorrectLogin";
 import axios from "axios";
+import { TextField, Button, CircularProgress, Box } from "@material-ui/core";
 
 export default function Login(props) {
-  /// loader state
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
@@ -32,7 +32,7 @@ export default function Login(props) {
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
-          setLoading(true);
+          setLoading(true)
 
           const { password } = values;
           axios
@@ -42,16 +42,14 @@ export default function Login(props) {
             // successful login prompts to main page
             .then((res) => {
               setLoading(false);
-              console.log(res.data);
               localStorage.setItem("token", res.data.token);
               setTimeout(() => {
                 props.history.push("/dashboard");
               }, 500);
             })
             .catch((err) => {
-              setLoading(false);
-              console.log(err);
               setError(true);
+              setLoading(false);
               setTimeout(() => {
                 setError(false);
               }, 3000);
@@ -68,10 +66,12 @@ export default function Login(props) {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} className="loginForm">
+            <h1>Jacinto</h1>
             <h2>enter the password:</h2>
-            <input
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
               type="password"
-              id="password"
               placeholder=""
               name="password"
               onChange={handleChange}
@@ -82,10 +82,12 @@ export default function Login(props) {
               }
             />
             <Error touched={touched.password} message={errors.password} />
-            <button type="submit">login</button>
+            <Button variant="contained" color="primary" type="submit">login</Button>
           </form>
         )}
       </Formik>
+      <Box height="25px"></Box>
+      {loading ? <CircularProgress /> : null}
       <IncorrectLogin error={error} />
     </motion.div>
   );

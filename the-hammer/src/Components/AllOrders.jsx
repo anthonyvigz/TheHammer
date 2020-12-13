@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
+import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -27,14 +27,14 @@ const columns = [
     id: "entryPrice",
     label: "Entry Price",
     minWidth: 90,
-    align: "right",
+    align: "left",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
     id: "orderType",
     label: "Order Type",
     minWidth: 120,
-    align: "right",
+    align: "left",
     format: (value) => value.toLocaleString("en-US"),
   },
   {
@@ -70,7 +70,6 @@ export default function AllOrders() {
   };
 
   const [todayData, setTodayData] = useState([]);
-  const rows = todayData;
 
   useEffect(() => {
     axios
@@ -88,8 +87,32 @@ export default function AllOrders() {
       });
   }, []);
 
+  function createData(
+    date,
+    time,
+    symbol,
+    smaEntryDelta,
+    entryPrice,
+    orderType,
+    shares
+  ) {
+    return { date, time, symbol, smaEntryDelta, entryPrice, orderType, shares };
+  }
+
+  const rows = todayData.map((order) => {
+    return createData(
+      order["Date"],
+      order["Time"],
+      order["Symbol"],
+      order["SmaEntryDelta"],
+      order["EntryPrice"],
+      order["OrderType"],
+      order["Shares"]
+    );
+  });
+
   return (
-    <div id="ordersTable">
+    <Box marginTop="100px" marginLeft="50px" height="100vh">
       <Paper className={classes.root}>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">
@@ -115,7 +138,7 @@ export default function AllOrders() {
                       hover
                       role="checkbox"
                       tabIndex={-1}
-                      key={row.code}
+                      key={row.symbol}
                     >
                       {columns.map((column) => {
                         const value = row[column.id];
@@ -143,6 +166,6 @@ export default function AllOrders() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-    </div>
+    </Box>
   );
 }

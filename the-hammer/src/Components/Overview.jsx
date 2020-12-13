@@ -108,7 +108,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Overview(props) {
 	const classes = useStyles();
-	const [ open, setOpen ] = React.useState(true);
 
 	const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
