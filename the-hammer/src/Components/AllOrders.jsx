@@ -95,6 +95,49 @@ export default function AllOrders() {
       });
   }, []);
 
+  
+  const rows = todayData.map((order) => {
+    return createData(
+      order["Date"],
+      order["Time"],
+      order["Symbol"],
+      order["SmaEntryDelta"],
+      order["EntryPrice"],
+      order["EntryPercent"],
+      order["OrderType"],
+      order["Shares"]
+    );
+  });
+
+  const dataToCsv = (data) => {
+    const headers = ["date", "time", "symbol", "smaEntryDelta", "entryPrice", "entryPrice", "entryPercent", "orderType", "shares"]
+    const csvRows = [
+      "date,time,symbol,smaEntryDelta,entryPrice,entryPercent,orderType,shares",
+    ];
+
+    for (const row of data) {
+      const values = headers.map(header => {
+        const escaped = (''+row[header]).replace(/"/g, '\\"')
+        return `"${escaped}"`;
+      })
+      csvRows.push(values.join(','));
+    }
+    return csvRows.join('\n')
+  };
+
+  const download = (csv) => {
+    const data = dataToCsv(csv);
+    const blob = new Blob([data], { type: 'text/csv'} );
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('hidden', '');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'download.csv');
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   function createData(
     date,
     time,
@@ -116,50 +159,6 @@ export default function AllOrders() {
       shares,
     };
   }
-
-  const rows = todayData.map((order) => {
-    return createData(
-      order["Date"],
-      order["Time"],
-      order["Symbol"],
-      order["SmaEntryDelta"],
-      order["EntryPrice"],
-      order["EntryPercent"],
-      order["OrderType"],
-      order["Shares"]
-    );
-  });
-
-  const dataToCsv = (data) => {
-    const headers = ["Date", "Time", "Symbol", "SmaEntryDelta", "EntryPrice", "EntryPrice", "EntryPercent", "OrderType", "Shares"]
-    const csvRows = [
-      "date,time,symbol,smaEntryDelta,entryPrice,entryPercent,orderType,shares",
-    ];
-
-    for (const row of data) {
-      const values = headers.map(header => {
-        const escaped = (''+row[header]).replace(/"/g, '\\"')
-        return `"${escaped}"`;
-      })
-      csvRows.push(values.join(','));
-    }
-
-    return csvRows.join('\n')
-  };
-
-  const download = (csv) => {
-    const blob = new Blob([csv], { type: 'text/csv'} );
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.setAttribute('hidden', '');
-    a.setAttribute('href', url);
-    a.setAttribute('download', 'download.csv');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-
-  const csvData = dataToCsv(rows);
 
   return (
     <Box marginTop="100px" marginLeft="50px" height="100vh">
@@ -216,7 +215,7 @@ export default function AllOrders() {
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
-      <Button variant="outlined" color="primary" onClick={() => download(csvData)}>Download Excel</Button>
+      <Button variant="outlined" color="primary" onClick={() => download(rows)}>Download Excel</Button>
     </Box>
   );
 }
