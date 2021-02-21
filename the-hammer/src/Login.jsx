@@ -66,7 +66,7 @@ export default function Login(props) {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} className="loginForm">
-            <h1>Jacinto</h1>
+            <h1>Jacinto <span style={{ color: "cyan" }}>v 2.0</span></h1>
             <h2>enter the password:</h2>
             <TextField
               id="outlined-basic"

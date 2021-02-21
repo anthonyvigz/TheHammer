@@ -51,13 +51,14 @@ export default function Orders(props) {
 				<TableHead>
 					<TableRow>
 						<TableCell>Date</TableCell>
-            <TableCell>Time</TableCell>
+           				<TableCell>Time</TableCell>
 						<TableCell>Symbol</TableCell>
 						<TableCell>Order Type</TableCell>
 						<TableCell>Shares</TableCell>
 						<TableCell>Entry Price</TableCell>
 						<TableCell>Entry % Change</TableCell>
-						<TableCell align="right">SMA Delta</TableCell>
+						<TableCell>SMA Delta</TableCell>
+						<TableCell align="right">Winning Trade?</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -71,7 +72,8 @@ export default function Orders(props) {
 							<TableCell>{orderData['Shares']}</TableCell>
 							<TableCell>{orderData['EntryPrice']}</TableCell>
 							<TableCell>{orderData['EntryPercent']}</TableCell>
-							<TableCell align="right">{orderData['SmaEntryDelta']}</TableCell>
+							<TableCell>{orderData['SmaEntryDelta']}</TableCell>
+							<TableCell align="right">{orderData['StockWinner']}</TableCell>
 						</TableRow>
 					: null))}
 				</TableBody>

@@ -5,12 +5,12 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import amber from '@material-ui/core/colors/amber';
+import cyan from '@material-ui/core/colors/cyan';
 
 const theme = createMuiTheme({
   palette: {
     type: "dark",
-    primary: amber,
+    primary: cyan,
     secondary: {
       main: '#ff3d00',
     },

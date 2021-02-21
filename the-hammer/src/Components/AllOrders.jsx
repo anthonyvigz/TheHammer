@@ -52,6 +52,13 @@ const columns = [
     align: "right",
     format: (value) => value.toFixed(2),
   },
+  {
+    id: "stockWinner",
+    label: "Winning Trade",
+    minWidth: 50,
+    align: "right",
+    format: (value) => value.toFixed(2),
+  },
 ];
 
 const useStyles = makeStyles({
@@ -66,7 +73,7 @@ const useStyles = makeStyles({
 export default function AllOrders() {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(100);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -105,14 +112,15 @@ export default function AllOrders() {
       order["EntryPrice"],
       order["EntryPercent"],
       order["OrderType"],
-      order["Shares"]
+      order["Shares"],
+      order["StockWinner"]
     );
   });
 
   const dataToCsv = (data) => {
-    const headers = ["date", "time", "symbol", "smaEntryDelta", "entryPrice", "entryPrice", "entryPercent", "orderType", "shares"]
+    const headers = ["date", "time", "symbol", "smaEntryDelta", "entryPrice", "entryPrice", "entryPercent", "orderType", "shares", "stockWinner"]
     const csvRows = [
-      "date,time,symbol,smaEntryDelta,entryPrice,entryPercent,orderType,shares",
+      "date,time,symbol,smaEntryDelta,entryPrice,entryPercent,orderType,shares,stockWinner",
     ];
 
     for (const row of data) {
@@ -146,7 +154,8 @@ export default function AllOrders() {
     entryPrice,
     entryPctChange,
     orderType,
-    shares
+    shares,
+    stockWinner
   ) {
     return {
       date,
@@ -157,6 +166,7 @@ export default function AllOrders() {
       entryPctChange,
       orderType,
       shares,
+      stockWinner
     };
   }
 
