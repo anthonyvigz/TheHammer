@@ -28,7 +28,7 @@ export default function Orders(props) {
 
     axios
       .put(
-        "https://the-pavilion-hammer.herokuapp.com/user/updateExclude",
+        "https://pavilion-server.herokuapp.com/user/updateExclude",
         { exclude: upperData },
         {
           headers: {

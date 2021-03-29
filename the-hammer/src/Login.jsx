@@ -36,7 +36,7 @@ export default function Login(props) {
 
           const { password } = values;
           axios
-            .post("https://the-pavilion-hammer.herokuapp.com/user/login", {
+            .post("https://pavilion-server.herokuapp.com/user/login", {
               password: password,
             })
             // successful login prompts to main page

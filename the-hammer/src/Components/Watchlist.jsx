@@ -16,7 +16,7 @@ export default function Orders() {
 
     useEffect(() => {
         axios
-          .get(`https://the-pavilion-hammer.herokuapp.com/data/get`)
+          .get(`https://pavilion-server.herokuapp.com/data/get`)
           .then((res) => {
             const length = res.data.data.length;
             const newlist = res.data.data[length - 1]["watchlist"].split(" ");
